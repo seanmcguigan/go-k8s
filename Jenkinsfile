@@ -31,14 +31,18 @@ podTemplate(label: 'mypod', containers: [
 
         stage('do some sops work') {
             container('sops') {
-                {
+
+                withCredentials([[$class: 'UsernamePasswordMultiBinding',
+                        credentialsId: 'DockerHub',
+                        usernameVariable: 'DOCKER_HUB_USER',
+                        passwordVariable: 'DOCKER_HUB_PASSWORD']]) {
+                    
                     sh """
-                       sops -v
-                       ls -l
-                       pwd
-                       """
+                        sops -v
+                        ls -l
+                        """
                 }
-            }
+            } 
         }
 
         stage('do some helm work') {
@@ -59,9 +63,3 @@ podTemplate(label: 'mypod', containers: [
         }
     }
 }
-
-
-
-
-
-

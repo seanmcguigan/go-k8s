@@ -11,7 +11,7 @@ podTemplate(label: 'mypod', containers: [
   ]) {
     node('mypod') {
         checkout scm
-/*
+
         stage('do some Docker work') {
             container('docker') {
 
@@ -28,7 +28,7 @@ podTemplate(label: 'mypod', containers: [
                 }
             }
         }
-*/
+
         stage('do some sops work') {
             container('sops') {
 

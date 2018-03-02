@@ -44,7 +44,7 @@ podTemplate(label: 'mypod', containers: [
                 }
             } 
         }
-
+/*
         stage('do some helm work') {
             container('helm') {
 
@@ -61,5 +61,6 @@ podTemplate(label: 'mypod', containers: [
                 }
             }
         }
+*/
     }
 }
